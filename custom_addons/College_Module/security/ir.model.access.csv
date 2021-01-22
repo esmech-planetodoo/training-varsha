@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_info,access.student.info,model_student_info,base.group_user,1,1,1,1
+access_student_hobbies,access.student.hobbies,model_student_hobbies,base.group_user,1,1,1,1
+access_book_details,access.book.details,College_Module.model_book_details,base.group_user,1,1,1,1
+access_library_details,access.library.details,College_Module.model_library_details,base.group_user,1,1,1,1
+access_subject_details,access.subject.details,College_Module.model_subject_details,base.group_user,1,1,1,1
+access_add_grace,access.add.grace,College_Module.model_add_grace,base.group_user,1,1,1,1

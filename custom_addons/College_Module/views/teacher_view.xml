@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+        <record id="res_partner_inherit_view_BP_ob" model="ir.ui.view">
+            <field name="name">Res new Partner Inherit View Business Partner </field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!--                <xpath expr="//field[@name='title']" position="before">-->
+                <!--                    <field name="isteacher"/>-->
+                <!--                </xpath>-->
+                <field name="title" position="before">
+                    <field name="isteacher"/>
+                    <field name="salary"/>
+                </field>
+            </field>
+        </record>
+        <record id="teacher_details_tree" model="ir.ui.view">
+            <field name="name">res.partner.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" >
+                    <field name="isteacher"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="teacher_details_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form editable="bottom" >
+                    <sheet>
+                        <group>
+                            <field name="isteacher"/>
+                            <field name="salary"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="teacher_info_action_form" model="ir.actions.act_window">
+            <field name="name">Teacher Details</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('isteacher', '=', True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!--        <record id="teacher_res_partnertest_form" model="ir.ui.view">-->
+        <!--            <field name="name">teacher.res.partner.form</field>-->
+        <!--            <field name="model">res.partner</field>-->
+        <!--            <field name="inherit_id" ref="base.view_partner_form"/>-->
+        <!--            <field eval="255" name="priority"/>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <xpath expr="//field[@name='active_lang_count']" position="after">-->
+        <!--                    <field name="isteacher"/>-->
+        <!--                </xpath>-->
+        <!--            </field>-->
+        <!--        </record>-->
+        <!--        <record id="teacher_res_partnertest_form" model="ir.ui.view">-->
+        <!--        <field name="name">teacher.res.partner.form</field>-->
+        <!--        <field name="model">res.partner</field>-->
+        <!--        <field name="inherit_id" ref="base.view_partner_form"/>-->
+        <!--        <field name="arch" type="xml">-->
+        <!--            <xpath expr="//field[@name='active_lang_count']" position="after">-->
+        <!--&lt;!&ndash;             <xpath name ='active_lang_count' position="after" >&ndash;&gt;-->
+        <!--                 <field name="isteacher"/>-->
+        <!--             </xpath>-->
+        <!--&lt;!&ndash;             <field name ='salary' position="after" ></field>&ndash;&gt;-->
+        <!--        </field>-->
+        <!--    </record>-->
+    </data>
+</odoo>

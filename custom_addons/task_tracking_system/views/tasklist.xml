@@ -1,0 +1,89 @@
+<odoo>
+    <data>
+<!--main menu-->
+        <menuitem id="task_tracking_sys_menu"
+              name="Task Tracking System" web_icon="task_tracking_system,static/main/tracking.jpeg"
+              sequence="100"/>
+<!--search view-->
+        <record id="task_tracking_view" model="ir.ui.view">
+            <field name="name">task.tracking.search</field>
+            <field name="model">task.tracking</field>
+            <field name="arch" type="xml">
+                <search string="Task Tracking Info">
+                    <field name="taskcreated" />
+                    <field name="taskassigndate" />
+                    <field name="name" />
+                    <field name="desc"/>
+                    <field name="complexity"/>
+                    <field name="priority"/>
+<!--                    <field name="reviewremark"/>-->
+                    <field name="assignto"/>
+                    <field name="assignby"/>
+<!--                    <field name="reviewdate"/>-->
+                </search>
+
+            </field>
+        </record>
+
+        <record id="task_tracking_tree_view" model="ir.ui.view">
+            <field name="name">task.tracking.tree</field>
+            <field name="model">task.tracking</field>
+            <field name="arch" type="xml">
+                <tree string="Task Tracking Info">
+
+                    <field name="taskassigndate" />
+                    <field name="name" />
+                    <field name="desc"/>
+                    <field name="complexity"/>
+                    <field name="priority"/>
+                    <field name="assignto"/>
+                    <field name="assignby"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="task_tracking_form_view" model="ir.ui.view">
+            <field name="name">task.tracking.form</field>
+            <field name="model">task.tracking</field>
+            <field name="arch" type="xml">
+                <form string="Task Tracking Info">
+                    <sheet>
+                        <group>
+                           <field name="taskcreated" />
+                           <field name="taskassigndate" />
+                           <field name="name" />
+                           <field name="desc"/>
+                           <field name="complexity"/>
+                           <field name="priority"/>
+                           <field name="assignto"/>
+                           <field name="assignby"/>
+                        </group>
+                        <notebook>
+                             <page string="Taskentries">
+                                <field name="taskentry_ids" >
+                                    <tree editable="bottom" >
+                                          <field name="reviewremark"/>
+                                          <field name="reviewdate"/>
+                                    </tree>
+                                </field>
+                             </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="task_tracking_action_form" model="ir.actions.act_window">
+            <field name="name">Task Tracking System</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">task.tracking</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="context">{'search_default_rec_id':1}</field>-->
+<!--            <field name="view_id" ref="task_tracking_view"/>-->
+        </record>
+
+        <menuitem id="task_data_submenu"  name="Task List"   parent="task_tracking_sys_menu" sequence="0" />
+        <menuitem id="task_tracking_submenu" name="Task Details" parent="task_data_submenu" action="task_tracking_action_form" />
+    </data>
+</odoo>

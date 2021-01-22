@@ -1,0 +1,161 @@
+<odoo>
+    <data>
+<!--main menu-->
+        <menuitem id="student_info_root_menu"
+              name="College Management"
+              sequence="100"/>
+<!--search view-->
+        <record id="student_info_search_view" model="ir.ui.view">
+            <field name="name">student.info.search</field>
+            <field name="model">student.info</field>
+            <field name="arch" type="xml">
+                <search string="student info Categories">
+                    <field name="f_name" />
+                    <field name="l_name" />
+                    <field name="full_name" />
+                    <field name="age"/>
+                    <field name="dob"/>
+                    <field name="gender"/>
+                    <field name="rollno"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </search>
+            </field>
+        </record>
+<!--tree view-->
+        <record id="student1_info_tree_view" model="ir.ui.view">
+            <field name="name">student1.info.tree</field>
+            <field name="model">student.info</field>
+            <field name="arch" type="xml">
+                <tree string="Student Info">
+                     <field name="full_name"/>
+                     <field name="age"/>
+                     <field name="dob"/>
+                     <field name="gender"/>
+                     <field name="rollno"/>
+                     <field name="phone"/>
+                     <field name="email"/>
+                </tree>
+            </field>
+        </record>
+<!--from views-->
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.info.form</field>
+            <field name="model">student.info</field>
+            <field name="arch" type="xml">
+                <form string="My Student Info">
+                    <header>
+<!--                         <field name="full_name" />-->
+
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="f_name" />
+                                <field name="l_name" />
+                                <field name="full_name" />
+                                <field name="gender"/>
+                                <field name="dob"/>
+                                <field name="rollno"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                </group>
+                                <group>
+                                <field name="age" />
+                                </group>
+                        </group>
+                        <notebook>
+                            <page string="Hobbies">
+                                <field name="hobies_ids" >
+                                    <tree editable="bottom" >
+                                       <field name="reading"/>
+                                       <field name="Swimming"/>
+                                        <field name="dancing"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Student marks">
+                                <group>
+                                    <field name="subject_ids">
+                                        <tree  editable="bottom">
+<!--                                            <field name="student_id"/>-->
+                                            <button name="%(College_Module.action_view_add_grace_from)d"  attrs="{'invisible': [('status','!=','fail')] }" string="Add Grace" type="action"/>
+                                            <field name="chemistry"/>
+                                            <field name="physics"/>
+                                            <field name="maths"/>
+                                            <field name="english"/>
+                                            <field name="total"/>
+                                            <field name="percentage"/>
+                                            <field name="status"/>
+                                        </tree>
+                                        <form>
+                                            <group>
+                                                <field name="chemistry"/>
+                                            </group>
+                                            <group>
+                                                <field name="physics"/>
+                                            </group>
+                                            <group>
+                                                <field name="maths"/>
+                                            </group>
+                                            <group>
+                                                <field name="english"/>
+                                            </group>
+                                            <group>
+                                                <field name="total"/>
+                                            </group>
+                                            <group>
+                                                <field name="percentage"/>
+                                            </group>
+                                            <group>
+                                                <field name="status"/>
+                                            </group>
+                                        </form>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--        <record id="sequence_roll_number" model="ir.sequence">-->
+<!--          <field name="name">Roll No</field>-->
+<!--          <field name="code">student.info</field>-->
+<!--          <field name="active">TRUE</field>-->
+<!--          <field name="prefix">FY</field>-->
+<!--          <field name="padding">4</field>-->
+<!--          <field name="number_next">1</field>-->
+<!--          <field name="number_increment">1</field>-->
+<!--        </record>-->
+
+<!--action-->
+        <record id="student_info_action_form" model="ir.actions.act_window">
+            <field name="name">Student Info</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_rec_id':1}</field>
+            <field name="view_id" ref="student1_info_tree_view"/>
+        </record>
+
+
+<!--          <record id="teacher_details_tree" model="ir.ui.view">-->
+<!--            <field name="name">res.partner.tree</field>-->
+<!--            <field name="model">res.partner</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree editable="bottom" >-->
+<!--                     <field name="isteacher"/>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        submenu-->
+        <menuitem id="school_data_submenu"  name="College data"    parent="student_info_root_menu" sequence="0" />
+        <menuitem id="student_info_submenu" name="Student Details" parent="school_data_submenu" action="College_Module.student_info_action_form" />
+        <menuitem id="library_info_submenu" name="Library Details" parent="school_data_submenu" action="College_Module.library_info_action_form" />
+        <menuitem id="teacher_info_submenu" name="Teacher Details" parent="school_data_submenu" action="College_Module.teacher_info_action_form" />
+<!--        <menuitem id="teacher_data_submenu"  name="Teacher data"    parent="student_info_root_menu" sequence="0" />-->
+
+    </data>
+</odoo>

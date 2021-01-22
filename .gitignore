@@ -1,0 +1,13 @@
+/MANIFEST.in
+/odoo.egg-info/
+/setup/
+/odoo/
+/LICENSE
+/setup.cfg
+/setup.py
+/requirements.txt
+/README.md
+/PKG-INFO
+/odoo-bin
+/custom_addons/custom_training/
+/custom_addons/college/
